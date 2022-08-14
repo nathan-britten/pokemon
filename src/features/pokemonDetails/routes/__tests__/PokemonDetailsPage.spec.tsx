@@ -9,7 +9,7 @@ import { testPokemonData } from "../../../../test/utilities";
 const mockedGetSinglePokemon = useGetSinglePokemon as jest.Mock<any>;
 
 const MockView = () => {
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleClick = () => {
     navigate("/pokemon/1");
   };
@@ -34,7 +34,9 @@ jest.mock("../../hooks/useGetSinglePokemon");
 
 describe("Pokemon Card", () => {
   beforeEach(() => {
-    mockedGetSinglePokemon.mockImplementation(() => ({ data: testPokemonData }));
+    mockedGetSinglePokemon.mockImplementation(() => ({
+      data: testPokemonData,
+    }));
   });
   afterEach(() => {
     jest.clearAllMocks();
@@ -50,21 +52,29 @@ describe("Pokemon Card", () => {
     act(() => {
       screen.getByText("Change Page").click();
     });
-    expect(screen.getByTestId('loading-spinner')).toBeVisible();
+    expect(screen.getByTestId("loading-spinner")).toBeVisible();
   });
 
   it("Should dispay no match message", () => {
     renderComponent();
-    mockedGetSinglePokemon.mockImplementation(() => ({ isLoading: false, data: undefined }));
+    mockedGetSinglePokemon.mockImplementation(() => ({
+      isLoading: false,
+      data: undefined,
+    }));
     act(() => {
       screen.getByText("Change Page").click();
     });
-    expect(screen.getByText("Sorry a Pokemon with that ID couldn't be retrieved")).toBeVisible();
+    expect(
+      screen.getByText("Sorry a Pokemon with that ID couldn't be retrieved")
+    ).toBeVisible();
   });
-  
+
   it("Should display a pokemon", () => {
     renderComponent();
-    mockedGetSinglePokemon.mockImplementation(() => ({ isLoading: false, data: testPokemonData }));
+    mockedGetSinglePokemon.mockImplementation(() => ({
+      isLoading: false,
+      data: testPokemonData,
+    }));
     act(() => {
       screen.getByText("Change Page").click();
     });
@@ -72,7 +82,7 @@ describe("Pokemon Card", () => {
     expect(screen.getByText("Test Stat")).toBeVisible();
     expect(screen.getByText("Test Type")).toBeVisible();
     expect(screen.getByText("Flying")).toBeVisible();
-    expect(screen.getByText("1.1")).toBeVisible();
+    expect(screen.getByText("11")).toBeVisible();
     expect(screen.getByText("NATHAN TEST - #001")).toBeVisible();
   });
 });
