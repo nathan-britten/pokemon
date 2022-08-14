@@ -27,7 +27,6 @@
   "devDependencies": {
     "@testing-library/user-event": "^14.4.2",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
-    "cypress": "^10.4.0",
     "eslint": "^8.20.0",
     "eslint-plugin-react": "^7.30.1",
     "husky": "^8.0.1",
@@ -65,7 +64,7 @@
     ]
   },
   "lint-staged": {
-    "{cypress,src}/**/*.{ts,tsx,js,jsx}": [
+    "{src}/**/*.{ts,tsx,js,jsx}": [
       "yarn lint:eslint:fix",
       "git add --force"
     ],
