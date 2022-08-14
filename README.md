@@ -9,7 +9,7 @@ To get started with this project navigate to the root and run:
 ### `yarn && yarn start`
 
 This installs the necessary packages runs the app in the development mode.\
-Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `yarn test:ci`
 
